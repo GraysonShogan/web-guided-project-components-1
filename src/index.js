@@ -41,18 +41,18 @@ const { open, close } = constants;
 // TASK 3- Comment out the div.panel from index.html and grab its parent element.
 //  We will generate the panel with code, and we'll need the parent
 //  so we can append the code-generated panel to the DOM.
-const accordion = null;
+const accordion = document.querySelector(".accordion");
 
 // TASK 4- Create a function 'makePanel' that creates a panel exactly as you see it in the HTML.
 function makePanel(/* what data does the panel need? */) {
   // TASK 5- Instantiate all the elements needed for a panel
-  const panel = null;
-  const panelBar = null;
-  const panelContent = null;
-  const panelTitle = null;
-  const panelButtons = null;
-  const openButton = null;
-  const closeButton = null;
+  const panel = document.createElement("div");
+  const panelBar = document.createElement("div");
+  const panelContent = document.createElement("div");
+  const panelTitle = document.createElement("h3");
+  const panelButtons = document.createElement("h3");
+  const openButton = document.createElement("button");
+  const closeButton = document.createElement("button");
 
   // TASK 6- Setup the structure of our elements
   /*
@@ -68,8 +68,21 @@ function makePanel(/* what data does the panel need? */) {
     </div>
   */
 
+  panel.appendChild(panelbar);
+  panel.appendChild(panelContent);
+  panelBar.appendChild(panelTitle);
+  panelBar.appendChild(panelButtons);
+  panelButtons.appendChild(openButton);
+  panelButtons.appendChild(closeButton);
   // TASK 7- Add proper class names to our elements (See index.html for reference)
   // paying attention to the elements that need to start out hidden
+
+  panel.classList.add("panel");
+  panelBar.classList.add("panelBar");
+  panelButtons.classList.add("panel-buttons");
+  openButton.classList.add("panel-btn-open");
+  closeButton.classList.add("panel-btn-close", "hide-btn");
+  panelContent.classList.add("panel-content");
 
   // TASK 8- Set text content using arguments as raw material
   //  and also using the open and close arrows imported at the top of the file
@@ -80,8 +93,11 @@ function makePanel(/* what data does the panel need? */) {
   //  - the contents need to show (the 'toggle-on' class name controls this)
 
   // don't forget to return the panel!
-  return null;
+  return panel;
 }
+
+const testPanel = makePanel({ title: "foo", content: "bar" });
+accordion.appendChild(testPanel);
 
 // TASK 10- Loop through the panelData we imported from the data folder
 //  creating panels for each content and title and append them to the DOM.
